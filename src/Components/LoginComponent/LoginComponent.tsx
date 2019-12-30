@@ -75,7 +75,7 @@ const LoginComponent = () => {
 
         <div className="row justify-content-center pt-5">
             <div className="col-8 col-md-4 col-lg-3">
-                <div className="card shadow" style={{borderRadius: '10px'}}>
+                <div className="card card-custom-login">
                     <div className="card-body">
                         <h4 className="card-title">Sign In</h4>
 
@@ -94,7 +94,7 @@ const LoginComponent = () => {
 
                         {loadingLogin ? <div className="spinner-border text-primary" role="status"/> :
                             <div className="text-center">
-                                <button type="submit" onClick={e => signIn(e)} className="btn btn-success mt-3">Sign In
+                                <button type="submit" onClick={e => signIn(e)} className="btn btn-success mt-3 custom-button-login">Sign In
                                 </button>
                             </div>
                         }
@@ -102,7 +102,7 @@ const LoginComponent = () => {
                 </div>
             </div>
             <div className="col-8 col-md-4 mt-5 mt-sm-0 col-lg-3">
-                <div className="card shadow" style={{borderRadius: '10px'}}>
+                <div className="card card-custom-login">
                     <div className="card-body">
                         <h5 className="card-title">Sign Up</h5>
                         <div className="form-group row pt-3 m-2">
@@ -120,7 +120,7 @@ const LoginComponent = () => {
                         {loadingRegister ? <div className="spinner-border text-primary" role="status"/> :
                             <div className="text-center">
                                 <button type="submit" onClick={(e: any) => sign_up(e)}
-                                        className="btn btn-primary mt-3">Sign Up
+                                        className="btn btn-primary mt-3 custom-button-login">Sign Up
                                 </button>
                             </div>
                         }

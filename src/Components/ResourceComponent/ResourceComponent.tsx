@@ -20,7 +20,7 @@ const ResourceComponent = ({loading, pageItems, totalItems, handlePage}: any) =>
     return <div>
         {!loading ?
             <div>
-                <h2>List Resources</h2>
+                <h2 className="custom-title">List Resources</h2>
                 <div className="card p-2">
                     <div className="row justify-content-center m-0">
                         {pageItems.map((resource: any) => (
@@ -30,7 +30,7 @@ const ResourceComponent = ({loading, pageItems, totalItems, handlePage}: any) =>
                                     <p className="card-text">{resource.year}</p>
                                     <p className="card-text" style={{color: resource.color}}>{resource.color}</p>
                                     <p className="card-text">{resource.pantone_value}</p>
-                                    <a className="btn btn-primary" onClick={() => setToggle(resource.id)} href="#/list"
+                                    <a className="btn btn-primary custom-button-login" onClick={() => setToggle(resource.id)} href="#/list"
                                        role="button">View </a>
                                 </div>
                             </div>
@@ -47,7 +47,7 @@ const ResourceComponent = ({loading, pageItems, totalItems, handlePage}: any) =>
         {modal && <ModalComponent header="View Resource" body={
             <div className="text-center">
                 <div className="card-body">
-                    <h5 className="card-title"><strong>{find(id, pageItems).name}</strong></h5>
+                    <h5 className="card-title custom-title"><strong>{find(id, pageItems).name}</strong></h5>
                     <p className="card-text"><strong>Year: </strong>{find(id, pageItems).year}</p>
                     <p className="card-text" style={{color: find(id, pageItems).color}}>
                         <strong>Color: </strong>{find(id, pageItems).color}</p>
@@ -55,7 +55,7 @@ const ResourceComponent = ({loading, pageItems, totalItems, handlePage}: any) =>
                 </div>
             </div>
         } onClose={toggleModal} size="2" footer={
-            <button className="btn btn-primary" onClick={toggleModal}>Salir</button>
+            <button className="btn btn-primary custom-button-login" onClick={toggleModal}>Salir</button>
         }/>}
     </div>;
 
