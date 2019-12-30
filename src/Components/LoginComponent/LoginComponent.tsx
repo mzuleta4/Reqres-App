@@ -4,6 +4,7 @@ import {login, signUp} from "../../Services";
 import {checkMail, toast} from "../../Util/Utils";
 import {useDispatch} from "react-redux";
 import {initLogin} from "../../Redux/Actions/AuthActions";
+import history from "../../Util/History";
 
 const LoginComponent = () => {
 
@@ -28,8 +29,10 @@ const LoginComponent = () => {
             if (checkMail(emailLogin)) {
                 try {
                     const res = await login({email: emailLogin, password: passwordLogin});
+                    console.log(res);
                     dispatch(initLogin(emailLogin, res.token));
                     setLoadingLogin(false);
+                    history.push("/list")
                 }catch (e) {
                     toast("Credenciales invalidas.", "error");
                     setLoadingLogin(false);
@@ -67,11 +70,11 @@ const LoginComponent = () => {
     return <div>
 
         <Navbar light className='navbar-color' expand="md">
-            <NavbarBrand href="/">Reqres App</NavbarBrand>
+            <NavbarBrand href="#/list">Reqres App</NavbarBrand>
         </Navbar>
 
         <div className="row justify-content-center pt-5">
-            <div className="col-md-4">
+            <div className="col-8 col-md-4 col-lg-3">
                 <div className="card shadow" style={{borderRadius: '10px'}}>
                     <div className="card-body">
                         <h4 className="card-title">Sign In</h4>
@@ -91,14 +94,14 @@ const LoginComponent = () => {
 
                         {loadingLogin ? <div className="spinner-border text-primary" role="status"/> :
                             <div className="text-center">
-                                <button type="submit" onClick={e => signIn(e)} className="btn btn-primary mt-3">Sign In
+                                <button type="submit" onClick={e => signIn(e)} className="btn btn-success mt-3">Sign In
                                 </button>
                             </div>
                         }
                     </div>
                 </div>
             </div>
-            <div className="col-md-4">
+            <div className="col-8 col-md-4 mt-5 mt-sm-0 col-lg-3">
                 <div className="card shadow" style={{borderRadius: '10px'}}>
                     <div className="card-body">
                         <h5 className="card-title">Sign Up</h5>

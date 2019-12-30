@@ -29,6 +29,7 @@ http.interceptors.request.use(
 http.interceptors.response.use(
 	function(response) {
 		// Do something with response data
+
 		return response;
 	},
 	function(error) {
@@ -36,7 +37,7 @@ http.interceptors.response.use(
 		// localStorage.removeItem('token');
 		// history.push('/');
 		// window.location.reload();
-		return Promise.reject(error);
+		return Promise.reject(error.status);
 	}
 );
 
@@ -51,7 +52,7 @@ export function get(url: string, params?: any): Promise<Response<any>> {
 export function post(url: string, params?: any): Promise<Response<any>> {
 	return http
 		.post(url, params)
-		.then(res => {return res.data ? res.data : res})
+		.then(res => {return res ? res.data : res})
 		.catch(reason => {
 			return Promise.reject(reason);
 		});

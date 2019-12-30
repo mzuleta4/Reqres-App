@@ -6,51 +6,40 @@ import {
     NavbarBrand,
     Nav,
     NavItem,
-    NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem,
-    NavbarText
+    NavLink
 } from 'reactstrap';
+import {useDispatch} from "react-redux";
+import {logoutUser} from "../../Redux/Actions/AuthActions";
+
 
 const NavComponent = () => {
 
-    const [isOpen, setIsOpen] = useState(false);
+    const dispatch = useDispatch();
 
+    const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
+
+
+    const logout = () => {
+        dispatch(logoutUser());
+        localStorage.removeItem("token");
+        console.log("Logout")
+    };
+
 
     return <div>
         <Navbar light className='navbar-color' expand="md">
-            <NavbarBrand href="/">Reqres App</NavbarBrand>
-            <NavbarToggler onClick={toggle} />
+            <NavbarBrand href="#/list">Reqres App</NavbarBrand>
+            <NavbarToggler onClick={toggle}/>
             <Collapse isOpen={isOpen} navbar>
                 <Nav className="ml-auto" navbar>
                     <NavItem>
-                        <NavLink>Components</NavLink>
+                        <NavLink className="active" href="#/actions">Actions</NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink>GitHub</NavLink>
+                        <NavLink href="#/" onClick={logout}>Cerrar Sesion</NavLink>
                     </NavItem>
-                    <UncontrolledDropdown nav inNavbar>
-                        <DropdownToggle nav caret>
-                            Options
-                        </DropdownToggle>
-                        <DropdownMenu right>
-                            <DropdownItem>
-                                Option 1
-                            </DropdownItem>
-                            <DropdownItem>
-                                Option 2
-                            </DropdownItem>
-                            <DropdownItem divider />
-                            <DropdownItem>
-                                Reset
-                            </DropdownItem>
-                        </DropdownMenu>
-                    </UncontrolledDropdown>
                 </Nav>
-                <NavbarText>Simple Text</NavbarText>
             </Collapse>
         </Navbar>
     </div>
