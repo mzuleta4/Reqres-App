@@ -12,7 +12,7 @@ interface props {
 const ViewResourceComponent = ({resourceList}: props) => {
 
     const options = [{value: "update", label: "Update resource"}
-        , {value: "delete", label: "Delete resource"}, {value: "chart", label: "Pie Chart"}];
+        , {value: "delete", label: "Delete resource"}];
 
     const [selectedOption, setSelectedOption] = useState(null);
     const [selectedOptionResource, setSelectedOptionResource] = useState(null);
@@ -29,6 +29,7 @@ const ViewResourceComponent = ({resourceList}: props) => {
     const handleChangeSelectResource = (option: any) => {
         setSelectedOptionResource(option);
         setResourceId(option.value);
+
     };
 
     const processLaunch = async (id?: number) => {
@@ -64,6 +65,7 @@ const ViewResourceComponent = ({resourceList}: props) => {
     }, [resourceList]);
 
 
+
     return <div>
         <div className="row mt-5 m-0 justify-content-center">
             <div className="col-10 col-md-6 col-lg-4">
@@ -75,32 +77,35 @@ const ViewResourceComponent = ({resourceList}: props) => {
         </div>
 
         <div className="row mt-5 m-0 justify-content-center">
-            <div className="col-10 col-md-6 col-lg-4">
-                <div className="card shadow" style={{borderRadius: "10px"}}>
-                    <div className="card-body">
-                        <h5 className="card-title">{label}</h5>
-                        {
-                            (label === "Update resource" || label === "Delete resource") ?
-                                <Select
-                                    value={selectedOptionResource}
-                                    onChange={handleChangeSelectResource}
-                                    options={optionsResource}/> : ""
-                        }
-                        <div className="form-group row pt-3 m-2">
-                            <label htmlFor="inputName">Name</label>
-                            <input type="text" className="form-control" onChange={e => setName(e.target.value)}
-                                   value={(label === "Update resource" || label === "Delete resource") ?
-                                       name : name
-                                   } id="inputName"/>
-                        </div>
 
-                        <div className="text-center">
-                            <Button color="info" onClick={() => processLaunch(resourceId)}
-                                    className="btn-sm">{label}</Button>{' '}
+            {(label === "Update resource" || label === "Delete resource") &&
+                <div className="col-10 col-md-6 col-lg-4">
+                    <div className="card shadow" style={{borderRadius: "10px"}}>
+                        <div className="card-body">
+                            <h5 className="card-title">{label}</h5>
+                            {
+                                (label === "Update resource" || label === "Delete resource") ?
+                                    <Select
+                                        value={selectedOptionResource}
+                                        onChange={handleChangeSelectResource}
+                                        options={optionsResource}/> : ""
+                            }
+                            <div className="form-group row pt-3 m-2">
+                                <label htmlFor="inputName">Name</label>
+                                <input type="text" className="form-control" onChange={e => setName(e.target.value)}
+                                       value={(label === "Update resource" || label === "Delete resource") ?
+                                           name : name
+                                       } id="inputName"/>
+                            </div>
+
+                            <div className="text-center">
+                                <Button color="info" onClick={() => processLaunch(resourceId)}
+                                        className="btn-sm">{label}</Button>{' '}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
         </div>
     </div>
 };
