@@ -29,7 +29,7 @@ const NavComponent = () => {
 
     return <div>
         <Navbar light className='navbar-color' expand="md">
-            <NavbarBrand href="#/list">Reqres App</NavbarBrand>
+            <NavbarBrand className="custom-font-dancing" href="#/list">Reqres App</NavbarBrand>
             <NavbarToggler onClick={toggle}/>
             <Collapse isOpen={isOpen} navbar>
                 <Nav className="ml-auto" navbar>

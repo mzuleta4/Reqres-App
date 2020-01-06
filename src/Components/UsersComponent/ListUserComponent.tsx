@@ -24,16 +24,16 @@ const ListUserComponent = ({loading, pageItems, totalItems, handlePage}: any) =>
     return <div>
         {!loading ?
             <div>
-                <h2>List Users</h2>
+                <h2 className="custom-title">List Users</h2>
                 <div className="card p-2">
                     <div className="row justify-content-center m-0">
                         {pageItems.map((user: any) => (
-                            <div className="card col-8 col-md-2 mt-5 ml-4 p-0" key={user.id}>
-                                <img src={user.avatar} className="card-img-top" alt="..."/>
+                            <div className="card col-8 col-md-2 mt-5 ml-4 p-0 custom-card-body" key={user.id}>
+                                <img src={user.avatar} className="card-img-top custom-card-body" alt="..."/>
                                 <div className="card-body">
                                     <h5 className="card-title">{`${user.first_name} ${user.last_name}`}</h5>
                                     <p className="card-text">{user.email}</p>
-                                    <a className="btn btn-primary" onClick={() => setToggle(user.id)} href="#/list"
+                                    <a className="btn btn-primary custom-button-login" onClick={() => setToggle(user.id)} href="#/list"
                                        role="button">View
                                         User</a>
                                 </div>
@@ -50,7 +50,7 @@ const ListUserComponent = ({loading, pageItems, totalItems, handlePage}: any) =>
             <div className="text-center">
                 <div>
                     <label htmlFor="file-input">
-                        <img src={find(id, pageItems).avatar} style={{cursor: "pointer"}} className="card-img-top"
+                        <img src={find(id, pageItems).avatar} style={{cursor: "pointer"}} className="custom-card-body card-img-top"
                              alt="avatar"/>
                     </label>
                     <input className="d-none" id="file-input" type="file" onChange={changeHandlerFile}/>
@@ -62,7 +62,7 @@ const ListUserComponent = ({loading, pageItems, totalItems, handlePage}: any) =>
                 </div>
             </div>
         } onClose={toggleModal} size="2" footer={
-            <button className="btn btn-primary" onClick={toggleModal}>Salir</button>
+            <button className="btn btn-primary custom-button-login" onClick={toggleModal}>Salir</button>
         }/>}
     </div>;
 
