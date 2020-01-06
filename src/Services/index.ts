@@ -43,3 +43,11 @@ export function updateUser(params: any, id: number | null | undefined): any {
 export function deleteUser(id: number | undefined): any | null {
     return deleteReq("/api/users/" + id).then(res => res).catch(reason => reason);
 }
+
+export function updateResource(params: any, id: number | null | undefined): any {
+    return put("api/unknown/" + id, params).then(res => res).catch(reason => reason);
+}
+
+export function deleteResource(id: number | undefined): any | null {
+    return deleteReq("/api/unknown/" + id).then(res => res).catch(reason => reason);
+}

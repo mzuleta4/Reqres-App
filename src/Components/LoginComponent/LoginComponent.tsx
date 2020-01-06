@@ -56,7 +56,9 @@ const LoginComponent = () => {
         } else {
             if (checkMail(emailRegister)) {
                 const res = await signUp({email: emailRegister, password: passwordRegister});
+                console.log(res);
                 dispatch(initLogin(emailRegister, res.token));
+                history.push("/list");
                 setLoadingRegister(false);
             } else {
                 toast("Ingrese un email valido.", "error");

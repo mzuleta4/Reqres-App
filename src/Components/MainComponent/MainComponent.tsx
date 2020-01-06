@@ -6,6 +6,8 @@ import {getListResource, getListUsers} from "../../Services";
 import {sliceObjects} from "../../Util/Utils";
 import ViewUserComponent from "../UsersComponent/ViewUserComponent";
 import ResourceComponent from "../ResourceComponent/ResourceComponent";
+import ViewResourceComponent from "../ResourceComponent/ViewResourceComponent";
+import StatiticsComponent from "../ResourceComponent/StatisticsComponent";
 
 const MainComponent = () => {
 
@@ -70,8 +72,14 @@ const MainComponent = () => {
                                    totalItems={filterResourceList.length}
                                    handlePage={(currentPage: number) => handleChangePageResource(currentPage)}/>
             </Route>
-            <Route path="/actions">
+            <Route path="/user_actions">
                 <ViewUserComponent userList={initialUserList}/>
+            </Route>
+            <Route path="/resource_actions">
+                <ViewResourceComponent resourceList={initialResourceList}/>
+            </Route>
+            <Route path="/statistics">
+                <StatiticsComponent resourceList={initialResourceList}/>
             </Route>
         </Switch>
     </Router>
